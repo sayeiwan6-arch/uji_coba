@@ -34,10 +34,10 @@ As Project Leader, I was responsible for defining the application's scope based 
 3. No installation or build steps required
 ## Screenshots
 <!-- Tambahkan screenshot aplikasi kamu di sini, contoh: -->
-![Calculator UI](screenshots/Beranda.png)
-![Calculator UI](screenshots/kalkulator.png)
-![Anu](screenshots/anu.png)
-![History](screenshots/Riwayat.png)
+![Calculator UI](poto/Beranda.png)
+![Calculator UI](poto/kalkulator.png)
+![Anu](poto/konversi.png)
+![History](poto/riwayat.png)
 
  
 ## License
