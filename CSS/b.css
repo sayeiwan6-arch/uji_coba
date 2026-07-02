@@ -1,0 +1,375 @@
+/* ==========================================
+   1. GLOBAL RESET & VARIABEL DARK THEME
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-body: #0a0f1d;          /* Biru dongker sangat gelap (Latar belakang utama) */
+    --surface: #111827;          /* Latar belakang kotak riwayat & kalkulator */
+    --surface-light: #1f2937;    /* Latar tombol standar / komponen dalam */
+    --primary: #3b82f6;          /* Biru neon terang untuk text highlight */
+    --primary-hover: #60a5fa;
+    --text-main: #f3f4f6;        /* Teks putih terang */
+    --text-muted: #9ca3af;       /* Teks abu-abu untuk waktu/keterangan kecil */
+    --border: #1f2937;           /* Border antar elemen */
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+/* ==========================================
+   2. NAVBAR COMPONENT (PERSIS IMAGE 1044C7)
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #0b1120; /* Warna biru dongker pekat sesuai gambar */
+    border-bottom: 1px solid #1e293b; 
+    min-height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Aksen teks "Web" berwarna ungu/biru neon */
+.logo span {
+    color: #6366f1; 
+    margin-left: 5px;
+}
+
+/* Ikon kotak menyala biru di sebelah kiri logo */
+.logo .dot-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #3b82f6;
+    border-radius: 3px;
+    margin-right: 10px;
+    box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #64748b; /* Warna abu-abu teks tidak aktif */
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-menu li a:hover {
+    color: #f1f5f9;
+}
+
+/* Gaya Menu Aktif (Bentuk Kotak Tombol Persis di Gambar) */
+.nav-menu li a.active {
+    color: #ffffff !important;
+    background: #141f36; /* Latar belakang tombol agak terang */
+    border: 1px solid #1e293b;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================
+   3. CONTAINER & DAFTAR RIWAYAT (PERSIS IMAGE F75347)
+   ========================================== */
+.container-riwayat-utama {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid #1e293b;
+    border-radius: var(--radius-md);
+}
+
+/* Tombol Hapus Semua Merah Pudar di Kanan Atas Box */
+.btn-hapus-semua {
+    display: block;
+    margin-left: auto;
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    margin-bottom: 20px;
+}
+
+.btn-hapus-semua:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* Kotak Item List Riwayat */
+.item-riwayat {
+    padding: 20px;
+    background: #111c30;          /* Biru gelap isi list */
+    border: 1px solid #1e2e4a;
+    border-left: 4px solid #2563eb; /* Garis biru tebal vertikal di kiri */
+    border-radius: var(--radius-sm);
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.operasi { 
+    color: var(--text-muted); 
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    font-family: monospace;
+}
+
+.hasil { 
+    font-size: 1.4em; 
+    font-weight: bold; 
+    color: var(--text-main);
+    margin: 5px 0; 
+}
+
+.waktu { 
+    font-size: 0.8em; 
+    color: #4b5563; 
+    margin-top: 8px;
+    display: block;
+}
+
+.pesan-kosong { 
+    text-align: center; 
+    color: var(--text-muted); 
+    padding: 30px; 
+}
+
+/* ==========================================
+Ini dia kode CSS (`b.css`) utuh yang sudah dirancang khusus untuk tema **Dark Mode Navy** mewah sesuai dengan foto *navbar* (`image_1044c7.png`) dan foto list riwayat database (`image_f75347.png`) yang kamu kirimkan tadi. 
+
+Silakan salin seluruh kode ini dan masukkan ke dalam file `CSS/b.css` milikmu:
+
+```css
+/* ==========================================
+   1. RESET & GLOBAL VARIABLES (DARK THEME)
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-body: #0a0f1d;          /* Biru dongker sangat gelap untuk latar utama */
+    --surface: #111c30;          /* Biru navy gelap untuk kotak container & item */
+    --surface-light: #1e293b;    /* Latar tombol / display kalkulator */
+    --primary-glow: #3b82f6;     /* Biru neon menyala */
+    --accent-purple: #6366f1;    /* Ungu neon teks Web */
+    --text-main: #ffffff;        /* Teks putih cerah */
+    --text-muted: #64748b;       /* Abu-abu teks tidak aktif */
+    --border-color: #1e293b;     /* Border tipis antar elemen */
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+/* ==========================================
+   2. NAVBAR COMPONENT (PERSIS IMAGE_1044C7)
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #0b1120; /* Warna gelap pekat navbar */
+    border-bottom: 1px solid var(--border-color);
+    min-height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    color: var(--accent-purple);
+    margin-left: 5px;
+}
+
+/* Kotak kecil menyala biru di samping kiri logo */
+.logo .dot-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-glow);
+    border-radius: 3px;
+    margin-right: 10px;
+    box-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-menu li a:hover {
+    color: #f1f5f9;
+}
+
+/* Style tombol aktif berkotak pembatas seperti di gambar */
+.nav-menu li a.active {
+    color: var(--text-main) !important;
+    background: #141f36;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================
+   3. CONTAINER & ITEM RIWAYAT (PERSIS IMAGE_F75347)
+   ========================================== */
+.container-riwayat-utama {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(17, 24, 39, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Tombol Hapus Semua Merah Transparan */
+.btn-hapus-semua {
+    display: block;
+    margin-left: auto;
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.btn-hapus-semua:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Pembungkus List Item Riwayat */
+#tempat-riwayat {
+    margin-top: 10px;
+}
+
+/* Desain Kotak Riwayat Dengan Garis Samping Biru Tebal */
+.item-riwayat {
+    padding: 20px;
+    background: var(--surface);          
+    border: 1px solid #1e2e4a;
+    border-left: 4px solid #2563eb; /* Garis vertikal biru khas di kiri */
+    border-radius: var(--radius-sm);
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.item-riwayat:hover {
+    transform: translateY(-2px);
+}
+
+.operasi { 
+    color: var(--text-muted); 
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    font-family: monospace;
+}
+
+.hasil { 
+    font-size: 1.4rem; 
+    font-weight: bold; 
+    color: var(--text-main);
+    margin: 5px 0; 
+}
+
+.waktu { 
+    font-size: 0.8rem; 
+    color: #4b5563; /* Warna abu gelap untuk tanggal & jam */
+    display: block;
+    margin-top: 5px;
+}
+
+.pesan-kosong { 
+    text-align: center; 
+    color: var(--text-muted); 
+    padding: 30px; 
+    font-style: italic;
+}
+
+/* ==========================================
+   4. RESPONSIVE UTILITY FOR MOBILE
+   ========================================== */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .container-riwayat-utama {
+        margin: 15px;
+        padding: 15px;
+    }
+    .nav-menu {
+        width: 100%;
+        justify-content: space-around;
+        gap: 5px;
+    }
+    .nav-menu li a {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Kalkulator</title>
+    <link rel="stylesheet" href="CSS/a.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/algebrite/1.4.0/algebrite.bundle-with-dependencies.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                Kalkulator.<span>Web</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="menu.html">Beranda</a></li>
+                <li><a href="kalkulator.html" class="active">Kalkulator</a></li>
+                <li><a href="konversi.html">Konversi</a></li>
+                <li><a href="riwayat.html">Riwayat</a></li> </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="calc-box">
+                <input type="text" id="calcDisplay" class="calc-screen" placeholder="0" readonly>
+                
+                <div class="calculator-body">
+                    
+                    <div class="calc-buttons">
+                        <button class="calc-btn clear" onclick="clearCalc()">AC</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('delete')">DEL</button>
+                        <button class="calc-btn operator" onclick="toggleSign()">+/-</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('÷')">÷</button>
+
+                        <button class="calc-btn" onclick="appendToCalc('7')">7</button>
+                        <button class="calc-btn" onclick="appendToCalc('8')">8</button>
+                        <button class="calc-btn" onclick="appendToCalc('9')">9</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('×')">×</button>
+                        
+                        <button class="calc-btn" onclick="appendToCalc('4')">4</button>
+                        <button class="calc-btn" onclick="appendToCalc('5')">5</button>
+                        <button class="calc-btn" onclick="appendToCalc('6')">6</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('-')">-</button>
+                        
+                        <button class="calc-btn" onclick="appendToCalc('1')">1</button>
+                        <button class="calc-btn" onclick="appendToCalc('2')">2</button>
+                        <button class="calc-btn" onclick="appendToCalc('3')">3</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('+')">+</button>
+                        
+                        <button class="calc-btn" onclick="appendToCalc('.')">.</button>
+                        <button class="calc-btn zero" onclick="appendToCalc('0')">0</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('(')">(</button>
+                        <button class="calc-btn operator" onclick="appendToCalc(')')">)</button>
+
+                        <button class="calc-btn operator" onclick="percent('%')">%</button>
+                        <button class="calc-btn operator" onclick="calculate()">=</button>
+            
+                        <button class="btn-edu" onclick="tampilkanCaraKerja()">Cara Kerja</button>
+                        <button class="menu-btn" id="toggleSciBtn" onclick="toggleScientificMode()">Mode Sci</button>
+                    </div> 
+
+                    <div class="scientific-section" id="sciSection">
+                        <button class="btn-general sci-btn" onclick="appendToCalc('X')">X</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('Y')">Y</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('Z')">Z</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('2nd')">2nd</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('10^')">10ˣ</button>
+        
+                         <!-- Baris 2 -->
+                        <button class="btn-general sci-btn" onclick="appendToCalc('sin(')">sin</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('cos(')">cos</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('tan(')">tan</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('1/')">1/x</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('^')">xʸ</button>
+        
+                        <!-- Baris 3 -->
+                        <button class="btn-general sci-btn" onclick="appendToCalc('sinh(')">sinh</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('cosh(')">cosh</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('tanh(')">tanh</button>
+                        <button class="btn-general sci-btn" onclick="insertPower('^2')">x²</button>
+                        <button class="btn-general sci-btn" onclick="insertPower('^3')">x³</button>
+        
+                        <!-- Baris 4 -->
+                        <button class="btn-general sci-btn" onclick="appendToCalc('√(')">√</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('3√(')">∛x</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('ln(')">ln</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('log(')">lg</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('e^')">eˣ</button>
+        
+                        <!-- Baris 5 -->
+                        <button class="btn-general sci-btn" onclick="appendToCalc('Deg')">Deg</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('π')">π</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('EE')">EE</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('Rand')">Rand</button>
+                        <button class="btn-general sci-btn" onclick="appendToCalc('!')">x!</button>        <button class="btn-general sci-btn" onclick="appendToCalc('e^')">eˣ</button>                        
+                    </div>
+                </div> 
+            </div> 
+            <div class="panel-output-group">
+                <div class="edukasi" id="eduArt" style="display: none; margin-top: 20px;">
+                    <h3>Cara Kerja:</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; color: #666; font-size: 12px; margin-top: 20px;">
+        <p><b>Navigasi Keyboard:</b> Angka & Operator standar | <b>Enter</b> = Hasil | <b>Backspace</b> = Hapus | <b>Esc</b> = AC</p>
+    </footer>
+    <script src="JS/algebrite.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="JS/riwayat.js"></script>
+</body>
+</html>

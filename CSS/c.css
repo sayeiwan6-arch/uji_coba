@@ -1,0 +1,493 @@
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* ==========================================
+   GLOBAL STYLE REFRESH (Sesuai Gambar)
+   ========================================== */
+body {
+    background-color: #0b0f19; /* Latar belakang luar super gelap */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #94a3b8;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #0b1120; /* Warna biru dongker pekat sesuai gambar */
+    border-bottom: 1px solid #1e293b; /* Garis pembatas tipis bawah */
+    min-height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff; /* Warna putih utama teks "Kalkulator." */
+    letter-spacing: 0.5px;
+}
+
+/* Aksen teks "Web" berwarna ungu/biru neon */
+.logo span {
+    color: #6366f1; 
+    margin-left: 5px;
+}
+
+/* Ikon kotak menyala biru di sebelah kiri logo */
+.logo .dot-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #3b82f6;
+    border-radius: 3px;
+    margin-right: 10px;
+    box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6; /* Efek neon menyala */
+}
+
+/* Container Judul Tengah (Konversi Satuan) */
+.navbar .container {
+    flex-grow: 1;                   /* Memberikan ruang agar judul tetap fleksibel di tengah */
+    text-align: center;             /* Memastikan teks h2 benar-benar di tengah */
+}
+
+.navbar .container h2 {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    margin: 0;                      /* Menghilangkan margin bawaan tag h2 agar navbar tidak melar */
+    font-weight: 500;
+}
+
+/* ==========================================
+   NAV MENU (Daftar Link Navigasi)
+   ========================================== */
+.nav-menu {
+    list-style: none;               /* Menghilangkan tanda bullet (titik) pada list `<li>` */
+    display: flex;                  /* Membuat daftar menu `<li>` berjejer ke samping */
+    gap: 20px;                      /* Memberikan jarak horizontal antar menu sebesar 20px */
+    margin: 0;                      /* Menghilangkan margin bawaan tag `<ul>` */
+    padding: 0;                     /* Menghilangkan padding bawaan tag `<ul>` */
+    align-items: center;
+}
+
+.nav-menu li a {
+    color: #64748b;                 /* Warna menu default saat tidak aktif (abu-abu redup) */
+    text-decoration: none;          /* Menghilangkan garis bawah pada link */
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 16px;              /* Ruang klik di dalam tombol menu */
+    border-radius: 8px;             /* Membuat sudut tombol menu agak melengkung */
+    transition: all 0.2s ease;      /* Efek animasi halus saat transisi warna */
+    border: 1px solid transparent;  /* Border transparan cadangan agar saat active tidak bergeser */
+}
+
+/* Efek saat mouse mendekati menu (Hover) */
+.nav-menu li a:hover {
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Style khusus untuk halaman aktif (class="active" pada menu Konversi) */
+.nav-menu li a.active {
+    color: #ffffff;                 /* Warna teks menu aktif menjadi putih terang */
+    background: rgba(99, 102, 241, 0.15); /* Latar belakang ungu transparan mendar */
+    border: 1px solid rgba(99, 102, 241, 0.3); /* Border ungu tipis di sekelilingnya */
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.1);
+}
+
+/* Container Box Konversi Utama */
+.konversi-box-lebar {
+    background: #111625; /* Warna panel sirkuit sesuai image_cb309a.png */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 35px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.konversi-box h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   TAB KATEGORI (Kapsul Cyberpunk)
+   ========================================== */
+.konversi-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.konversi-tabs button {
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #64748b;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.konversi-tabs button:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    color: #cbd5e1;
+}
+
+/* Kondisi tombol saat aktif / diklik */
+.konversi-tabs button.active {
+    background: #6366f1; /* Ungu neon terang */
+    color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+/* ==========================================
+   FORM INPUT & DROPDOWN SELECT
+   ========================================== */
+.konversi-row {
+    margin-bottom: 20px;
+}
+
+.konversi-row label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    color: #475569; /* Abu-abu redup khas label */
+}
+
+/* Input angka dan dropdown satuan */
+.konversi-form input[type="number"],
+.konversi-form input[type="text"],
+.konversi-form select {
+    width: 100%;
+    background: #090d16; /* Input background super gelap kontras */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.konversi-form input:focus,
+.konversi-form select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* Custom placeholder agar mirip text 'Contoh: 100' */
+.konversi-form input::placeholder {
+    color: #334155;
+    font-family: monospace;
+}
+
+/* ==========================================
+   TOMBOL TUKAR / SWAP (⇄)
+   ========================================== */
+.konversi-swap {
+    display: flex;
+    background: rgba(30, 41, 59, 0.2);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: #6366f1;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin: 15px auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.konversi-swap:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+/* ==========================================
+   BOX HASIL / RESULT CONTAINER
+   ========================================== */
+.konversi-result {
+    background: #060913;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 16px;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 1rem;
+    color: #64748b;
+    min-height: 24px;
+    line-height: 1.5;
+}
+
+/* Highlight angka hasil konversi (warna Cyan / Biru Laut Neon) */
+.konversi-result span {
+    color: #38bdf8;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+/* Style Khusus untuk Output Table di Tabel Kebenaran */
+[data-truth-table] table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #090d16;
+    border-radius: 8px;
+    overflow: hidden;
+    border: none;
+}
+
+[data-truth-table] th {
+    background: rgba(99, 102, 241, 0.1);
+    color: #818cf8;
+    padding: 10px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+[data-truth-table] td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   CSS PANEL TABEL KEBENARAN (TRUTH TABLE) - UPGRADED A-Z
+   ========================================================================== */
+
+/* Wadah Keypad Logika */
+.logika-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0 15px 0;
+}
+
+/* Tombol Keypad Utama */
+.btn-logika {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    padding: 12px 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-logika:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-logika:active {
+    transform: translateY(1px);
+}
+
+/* Tombol Variabel (P, Q, R, X, Y, Z) */
+.btn-logika.var {
+    background: rgba(168, 85, 247, 0.15); /* Ungu Transparan */
+    border-color: rgba(168, 85, 247, 0.3);
+    color: #c084fc;
+}
+.btn-logika.var:hover {
+    background: rgba(168, 85, 247, 0.25);
+    border-color: rgba(168, 85, 247, 0.5);
+}
+
+/* Tombol Operator Utama (AND, OR, XOR, NOT) */
+.btn-logika.op {
+    background: rgba(59, 130, 246, 0.15); /* Biru Transparan */
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+}
+.btn-logika.op:hover {
+    background: rgba(59, 130, 246, 0.25);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Tombol Operator Alternatif (NAND, NOR, XNOR) */
+.btn-logika.op-alt {
+    background: rgba(234, 179, 8, 0.1); /* Kuning/Amber Muted */
+    border-color: rgba(234, 179, 8, 0.25);
+    color: #fbbf24;
+}
+.btn-logika.op-alt:hover {
+    background: rgba(234, 179, 8, 0.2);
+    border-color: rgba(234, 179, 8, 0.4);
+}
+
+/* Tombol Aksi Penting (C - Clear) */
+.btn-logika.aksi.c {
+    background: rgba(244, 63, 94, 0.15); /* Merah Transparan */
+    border-color: rgba(244, 63, 94, 0.3);
+    color: #fb7185;
+}
+.btn-logika.aksi.c:hover {
+    background: rgba(244, 63, 94, 0.25);
+    border-color: rgba(244, 63, 94, 0.5);
+}
+
+/* Input Manual Huruf Cadangan */
+#manualHuruf {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+    text-align: center;
+    font-weight: 600;
+}
+#manualHuruf:focus {
+    border-color: #6366f1;
+}
+
+/* ==========================================================================
+   STYLING OUTPUT TABEL DINAMIS (Anti Melebar Keluar Layar)
+   ========================================================================== */
+[data-truth-table] {
+    width: 100%;
+    overflow-x: auto; /* Memunculkan scrollbar horizontal jika tabel terlalu lebar di HP */
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+[data-truth-table] table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(30, 41, 59, 0.4); /* Slate dark background */
+    font-size: 0.9rem;
+}
+
+[data-truth-table] th, 
+[data-truth-table] td {
+    padding: 12px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-truth-table] th {
+    background: rgba(15, 23, 42, 0.8);
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Efek Hover baris tabel biar interaktif */
+[data-truth-table] tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Responsivitas untuk Layar HP Kecil */
+@media (max-width: 480px) {
+    .logika-keypad {
+        gap: 6px;
+    }
+    .btn-logika {
+        padding: 10px 4px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+    }
+    [data-truth-table] th, 
+    [data-truth-table] td {
+        padding: 8px 6px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ==========================================
+   ADDED: SCROLL PANEL UNTUK HALAMAN KONVERSI
+   ========================================== */
+
+/* 1. Scroll Horizontal untuk Tab Kategori (Biar rapi di HP/Layar Kecil) */
+.konversi-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;          /* Mengaktifkan scroll ke samping */
+    white-space: nowrap;       /* Mencegah tombol turun ke bawah */
+    padding-bottom: 12px;      /* Ruang untuk scrollbar */
+    margin-bottom: 25px;
+    -webkit-overflow-scrolling: touch; /* Scroll halus di smartphone */
+}
+
+/* 2. Scroll Panel untuk Hasil Langkah & Tabel Kebenaran */
+.truth-steps-container,
+[data-truth-table] {
+    max-height: 350px;         /* Batasi tinggi maksimal panel hasil */
+    overflow-y: auto;          /* Aktifkan scroll vertikal jika konten penuh */
+    overflow-x: auto;          /* Aktifkan juga scroll horizontal jika tabel terlalu lebar */
+    padding-right: 8px;
+    margin-top: 15px;
+    border-radius: 8px;
+    background: rgba(10, 15, 29, 0.5); /* Background gelap transparan */
+    border: 1px solid #1e2e4a;
+}
+
+/* ==========================================
+   SCROLL PANEL UTAMA UNTUK FORM KONVERSI
+   ========================================== */
+.panel-konversi-scroll {
+    max-height: 520px;       /* Batas tinggi panel agar tidak memotong halaman */
+    overflow-y: auto;        /* Memunculkan scroll vertikal otomatis jika tabel panjang */
+    overflow-x: hidden;      /* Mencegah scroll samping pada form utama */
+    padding-right: 10px;     /* Memberi jarak aman antara tombol/form dengan scrollbar */
+    margin-top: 15px;
+}
+
+/* ==========================================
+   DESAIN SCROLLBAR CUSTOM (DARK THEME)
+   ========================================== */
+
+/* Lebar batang scrollbar vertikal */
+.panel-konversi-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Lintasan/Jalur background scrollbar */
+.panel-konversi-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+
+/* Batang penggeser scrollbar */
+.panel-konversi-scroll::-webkit-scrollbar-thumb {
+    background: #1e2e4a;     /* Biru navy gelap senada dengan box */
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+/* Efek menyala biru neon saat kursor diarahkan ke scrollbar */
+.panel-konversi-scroll::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;     /* Biru neon terang */
+}

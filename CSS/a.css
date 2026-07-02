@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* === DAFTAR WARNA KUNCI (Wajib ada paling atas agar tidak putih) === */
+:root {
+    --bg: #0b0e1a;
+    --surface: #12172b;
+    --surface-2: #161d38;
+    --border: #232c4d;
+    --border-light: #2e3a66;
+    --accent: #4f6bff;
+    --accent-dim: #3a4fc7;
+    --accent-2: #8b5cf6;
+    --text: #e8ebf7;
+    --text-muted: #7a839c;
+    --text-faint: #4b5475;
+    --danger: #ff5c7a;
+    --success: #3ddc97;
+    --radius: 14px;
+    --radius-sm: 9px;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body-font: 'Inter', sans-serif;
+}
+
+/* === RESET & DASAR === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* === Efek Grid Sirkuit di Background === */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.18;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+    pointer-events: none;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* === NAVBAR UTAMA === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(11, 14, 26, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    display: inline-block;
+}
+
+.logo span {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+}
+
+.nav-menu a {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    transition: 0.2s ease;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+    color: var(--text);
+    background: var(--surface-2);
+}
+
+.nav-menu a.active {
+    border: 1px solid var(--border-light);
+}
+
+/* === LAYOUT UTAMA KALKULATOR === */
+.hero {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* === KOTAK UTAMA KALKULATOR === */
+.calc-box {
+    background: linear-gradient(180deg, var(--surface), var(--surface-2));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    width: 100%;
+    max-width: 360px;
+    transition: max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.7);
+}
+
+/* Lebar fleksibel ketika mode ilmiah aktif */
+.calc-box.sci-active {
+    max-width: 660px;
+}
+
+/* Bagian Atas Kotak */
+.calc-box-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.calc-box-head h2 {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#toggleSciBtn {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(79, 107, 255, 0.1);
+    border: 1px solid rgba(79, 107, 255, 0.25);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#toggleSciBtn:hover {
+    background: rgba(79, 107, 255, 0.2);
+}
+
+#toggleSciBtn.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+    color: #fff !important;
+    border-color: transparent;
+}
+
+/* LAYAR KALKULATOR */
+.calc-screen {
+    width: 100%;
+    height: 72px; /* Ukuran tinggi layar yang pas */
+    background: #0b0e1a !important; /* Latar belakang hitam sirkuit */
+    border: 1px solid #232c4d !important;
+    border-radius: 9px;
+    padding: 0 20px;
+    margin-bottom: 16px;
+    text-align: right; /* Angka rata kanan */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 30px;
+    font-weight: 600;
+    color: #e8ebf7 !important; /* Warna angka putih terang */
+    text-shadow: 0 0 12px rgba(79, 107, 255, 0.4); /* Efek neon biru */
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    outline: none; /* Menghapus garis biru bawaan browser saat aktif */
+    box-sizing: border-box;
+}
+
+.calc-screen .previous-operand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #4b5475; /* Warna teks riwayat atas samar */
+    min-height: 18px;
+}
+
+.calc-screen .current-operand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 30px;
+    font-weight: 600;
+    color: #e8ebf7 !important; /* <--- Ini memaksa warna angka utama jadi putih cerah */
+    text-shadow: 0 0 12px rgba(79, 107, 255, 0.4); /* Efek pendaran neon biru */
+}
+
+/* BODY TOMBOL SANGGA */
+.calculator-body {
+    display: flex;
+    gap: 12px;
+}
+
+/* === TOMBOL NUMERIK & STANDAR === */
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    flex: 1;
+}
+
+.calc-btn {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 0;
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--surface-2);
+    color: var(--text);
+    transition: 0.15s ease;
+}
+
+.calc-btn:hover {
+    background: var(--border-light);
+}
+
+.calc-btn.operator {
+    background: rgba(79, 107, 255, 0.12);
+    color: var(--accent);
+    border-color: rgba(79, 107, 255, 0.25);
+}
+
+.calc-btn.clear {
+    background: rgba(255, 92, 122, 0.1);
+    color: var(--danger);
+    border-color: rgba(255, 92, 122, 0.25);
+}
+
+/* === WARNA BARU TOMBOL CARA KERJA === */
+.calc-buttons .btn-edu {
+    grid-column: span 2;
+    background: rgba(45, 212, 191, 0.1) !important; /* Hijau cyan transparan */
+    border: 1px solid rgba(45, 212, 191, 0.3) !important;
+    color: #2dd4bf !important; /* Warna teks cyan terang */
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    padding: 12px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calc-buttons .btn-edu:hover {
+    background: rgba(45, 212, 191, 0.25) !important;
+    border-color: #2dd4bf !important;
+    box-shadow: 0 0 12px rgba(45, 212, 191, 0.3);
+    transform: translateY(-1px);
+}
+
+/* MENU BAWAH DALAM GRID */
+.menu-btn {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 11px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    padding: 10px 0;
+}
+.menu-btn:hover { background: var(--border-light); color: var(--text); }
+
+/* === SISI TOMBOL SAINTIFIK === */
+.scientific-section {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    flex: 0.8;
+    animation: fadeInSci 0.25s ease forwards;
+}
+
+.calc-box.sci-active .scientific-section {
+    display: grid;
+}
+
+.scientific-section button {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.scientific-section button:hover {
+    background: var(--border-light);
+    color: var(--text);
+}
+
+/* === PANEL RIWAYAT & EDUKASI (KANAN) === */
+.panel-output-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.nav-menu a.active {
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border-light);
+}
+
+.edukasi {
+    width: 100%;
+    background: var(--surface) !important; /* Latar belakang kotak gelap */
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-top: 4px solid var(--accent) !important; /* Garis aksen ungu/biru di atas kotak */
+    margin-top: 20px;
+    color: var(--text) !important; /* Warna teks utama terang */
+    animation: slideDownEdu 0.3s ease-out forwards; /* Animasi muncul halus */
+}
+
+/* Mengatur Judul "Cara Kerja:" */
+.edukasi h3 {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text) !important;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+/* Mengatur teks isi penjelasannya (jika JS kamu memasukkan tag p atau teks biasa) */
+.edukasi p, .edukasi div {
+    font-size: 14px;
+    color: var(--text-muted) !important; /* Teks penjelasan abu-abu soft agar nyaman dibaca */
+    line-height: 1.6;
+    font-family: var(--body-font);
+}
+
+/* Jika di dalam penjelasan Cara Kerja ada rumus matematika/angka */
+.edukasi code, .edukasi span.math {
+    font-family: var(--mono);
+    color: var(--accent-2);
+    background: rgba(139, 92, 246, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* Animasi memanjang ke bawah saat tombol Cara Kerja diklik */
+@keyframes slideDownEdu {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

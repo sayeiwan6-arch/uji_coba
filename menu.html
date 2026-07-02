@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator.Web — Kalkulator, Konversi & Riwayat Online</title>
+    <link rel="stylesheet" href="CSS/d.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                Kalkulator.<span>Web</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="menu.html" class="active">Beranda</a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+                <li><a href="konversi.html">Konversi</a></li>
+                <li><a href="riwayat.html">Riwayat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="landing-hero">
+        <h1>Hitung, konversi, dan <span class="grad">catat semuanya</span> dalam satu alat.</h1>
+        <p class="lead">
+            Kalkulator.Web adalah aplikasi perhitungan berbasis browser dengan kalkulator dasar dan scientific,
+            13 kategori konversi &amp; kalkulator khusus, serta pencatatan riwayat otomatis — tanpa instalasi, tanpa ribet.
+        </p>
+        <div class="landing-cta">
+            <a href="kalkulator.html" class="btn btn-primary">Buka Kalkulator →</a>
+            <a href="konversi.html" class="btn btn-secondary">Coba Konversi Satuan</a>
+        </div>
+
+        <!-- Mini preview kalkulator -->
+        <div class="landing-preview">
+            <div class="display">
+                <div class="previous-operand">128 ÷ 4</div>
+                <div class="current-operand">32</div>
+            </div>
+            <div class="mini-grid">
+                <span>7</span><span>8</span><span>9</span><span class="op">÷</span>
+                <span>4</span><span>5</span><span>6</span><span class="op">×</span>
+                <span>1</span><span>2</span><span>3</span><span class="op">−</span>
+                <span>0</span><span>.</span><span class="eq">=</span><span class="op">+</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="landing-stats">
+        <div class="stat">
+            <div class="num"><span data-counter="3" data-suffix="">0</span></div>
+            <div class="label">Modul Inti</div>
+        </div>
+        <div class="stat">
+            <!-- 🛠️ Tambahkan id="stat-kategori" -->
+            <div class="num"><span id="stat-kategori" data-counter="12" data-suffix="">0</span></div>
+            <div class="label">Kategori Konversi</div>
+        </div>
+        <div class="stat">
+            <!-- 🛠️ Tambahkan id="stat-riwayat" dan ganti data-suffix jika perlu -->
+            <div class="num"><span id="stat-riwayat" data-counter="0" data-suffix="">0</span></div>
+            <div class="label">Riwayat Tersimpan</div>
+        </div>
+        <div class="stat">
+            <div class="num"><span data-counter="0" data-suffix=" Rp">0</span></div>
+            <div class="label">Biaya Penggunaan</div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="landing-section" id="fitur">
+        <div class="section-head">
+            <span class="tag">Modul Aplikasi</span>
+            <h2>Tiga alat, satu tampilan</h2>
+            <p>Setiap modul dirancang untuk dipakai berdiri sendiri maupun saling terhubung lewat riwayat yang sama.</p>
+        </div>
+        <div class="feature-grid">
+            <a href="kalkulator.html" class="feature-card">
+                <div class="icon">＋</div>
+                <h3>Kalkulator Dasar</h3>
+                <p>Operasi tambah, kurang, kali, bagi, persen, dan dukungan input keyboard penuh untuk perhitungan cepat.</p>
+                <span class="go">Buka modul →</span>
+            </a>
+            <a href="konversi.html" class="feature-card">
+                <div class="icon">⇄</div>
+                <h3>Konversi &amp; Kalkulator Khusus</h3>
+                <p>13 kategori: satuan, mata uang, sistem angka, diskon, IMT, hingga tabel kebenaran logika.</p>
+                <span class="go">Buka modul →</span>
+            </a>
+            <a href="riwayat.html" class="feature-card">
+                <div class="icon">▤</div>
+                <h3>Riwayat Otomatis</h3>
+                <p>Setiap hasil perhitungan dan konversi tersimpan otomatis di perangkatmu, lengkap dengan waktu.</p>
+                <span class="go">Buka modul →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="landing-section" id="cara-pakai">
+        <div class="section-head">
+            <span class="tag">Cara Pakai</span>
+            <h2>Tiga langkah, tanpa instalasi</h2>
+            <p>Tidak perlu akun atau aplikasi tambahan. Buka langsung dari browser dan mulai hitung.</p>
+        </div>
+        <div class="steps-list">
+            <div class="step-item">
+                <div class="step-num">01</div>
+                <div>
+                    <h4>Pilih modul yang dibutuhkan</h4>
+                    <p>Masuk ke menu Kalkulator untuk hitungan cepat, atau Konversi untuk mengubah satuan ukur.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">02</div>
+                <div>
+                    <h4>Masukkan nilai dan jalankan</h4>
+                    <p>Ketik angka lewat tombol di layar atau keyboard, lalu lihat hasilnya muncul secara real-time.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">03</div>
+                <div>
+                    <h4>Cek kembali lewat riwayat</h4>
+                    <p>Semua proses yang sudah dijalankan otomatis tercatat dan bisa dibuka lagi di menu Riwayat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TEAM / CREDITS ===== -->
+    <section class="landing-section" id="tim">
+        <div class="section-head">
+            <span class="tag">Di Balik Aplikasi Ini</span>
+            <h2>Dikembangkan oleh tim kecil</h2>
+            <p>Proyek ini dirancang, dibangun, dan diuji oleh tiga pengembang dengan peran masing-masing.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="avatar">MR</div>
+                <h4>Muhammad Ridzuan</h4>
+                <span class="role">Project Leader</span>
+            </div>
+            <div class="team-card">
+                <div class="avatar">RR</div>
+                <h4>Erlangga Pazry Ramadani</h4>
+                <span class="role">Lead Programmer</span>
+            </div>
+            <div class="team-card">
+                <div class="avatar">EP</div>
+                <h4>Reza Raihandra</h4>
+                <span class="role">QA Engineer</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="landing-footer">
+        <div class="foot-logo">Kalkulator.Web</div>
+    </footer>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>

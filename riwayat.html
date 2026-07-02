@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Riwayat Kalkulator</title>
+    <link rel="stylesheet" href="CSS/b.css"> 
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="dot-icon"></span>Kalkulator.<span>Web</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="menu.html">Beranda</a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+                <li><a href="konversi.html">Konversi</a></li>
+                <li><a href="riwayat.html" class="active">Riwayat</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-riwayat-utama">
+        <h2 style="text-align: center; margin-bottom: 20px; color: white;">Riwayat Perhitungan</h2>
+        
+        <!-- Tombol Hapus Semua -->
+        <button class="btn-hapus-semua" onclick="hapusSemuaRiwayat()">Hapus Semua</button>
+        
+        <!-- Wadah tunggal untuk list riwayat -->
+        <div id="tempat-riwayat">
+            <p class="pesan-kosong">Memuat riwayat...</p>
+        </div>
+    </main>
+
+    <!-- SCRIPT JAVASCRIPT -->
+    <script src="JS/riwayat.js"></script>
+</body>
+</html>

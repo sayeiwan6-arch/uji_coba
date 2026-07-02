@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi - Kalkulator.Web</title>
+    <link rel="stylesheet" href="CSS/c.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="dot-icon"></span>Kalkulator.<span>Web</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="menu.html">Beranda</a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+                <li><a href="konversi.html" class="active">Konversi</a></li>
+                <li><a href="riwayat.html">Riwayat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="konversi-box konversi-box-lebar">
+                <h2>Konversi &amp; Kalkulator Khusus</h2>
+
+                <div class="konversi-tabs">
+                    <button class="active" data-tab-kategori="panjang">Panjang</button>
+                    <button data-tab-kategori="berat">Berat</button>
+                    <button data-tab-kategori="suhu">Suhu</button>
+                    <button data-tab-kategori="area">Area</button>
+                    <button data-tab-kategori="volume">Volume</button>
+                    <button data-tab-kategori="waktu">Waktu</button>
+                    <button data-tab-kategori="data">Data</button>
+                    <button data-tab-kategori="kecepatan">Kecepatan</button>
+                    <button data-tab-kategori="sistem_angka">Sistem Angka</button>
+                    <button data-tab-kategori="diskon">Diskon</button>
+                    <button data-tab-kategori="imt">IMT</button>
+                    <button data-tab-kategori="truth_table">Tabel Kebenaran</button>
+                </div>
+
+                <!-- ===== FORM LINEAR (Panjang, Berat, Suhu, Area, Volume, Waktu, Data, Kecepatan, Mata Uang) ===== -->
+                <div class="konversi-form" data-form-linear>
+                    <div class="konversi-row">
+                        <label for="nilai">Masukkan Nilai</label>
+                        <input type="number" id="nilai" data-input-nilai placeholder="Contoh: 100">
+                    </div>
+
+                    <div class="konversi-row">
+                        <label for="dari">Dari Satuan</label>
+                        <select id="dari" data-select-dari></select>
+                    </div>
+
+                    <button class="konversi-swap" data-konversi-swap title="Tukar satuan">⇄</button>
+
+                    <div class="konversi-row">
+                        <label for="ke">Ke Satuan</label>
+                        <select id="ke" data-select-ke></select>
+                    </div>
+
+                    <div class="konversi-result" data-konversi-hasil></div>
+                </div>
+
+                <!-- ===== PANEL SISTEM ANGKA (basis bilangan) ===== -->
+                <div class="konversi-form" data-panel-konversi="sistem_angka" style="display:none;">
+                    <div class="konversi-row">
+                        <label for="basisInput">Masukkan Angka</label>
+                        <input type="text" id="basisInput" data-basis-input placeholder="Contoh: 1010 atau FF">
+                    </div>
+                    <div class="konversi-row">
+                        <label for="basisDari">Dari Basis</label>
+                        <select id="basisDari" data-basis-dari>
+                            <option value="2">Biner (Basis 2)</option>
+                            <option value="8">Oktal (Basis 8)</option>
+                            <option value="10" selected>Desimal (Basis 10)</option>
+                            <option value="16">Heksadesimal (Basis 16)</option>
+                        </select>
+                    </div>
+                    <div class="konversi-row">
+                        <label for="basisKe">Ke Basis</label>
+                        <select id="basisKe" data-basis-ke>
+                            <option value="2" selected>Biner (Basis 2)</option>
+                            <option value="8">Oktal (Basis 8)</option>
+                            <option value="10">Desimal (Basis 10)</option>
+                            <option value="16">Heksadesimal (Basis 16)</option>
+                        </select>
+                    </div>
+                    <div class="konversi-result" data-basis-hasil></div>
+                </div>
+
+                <!-- ===== PANEL DISKON ===== -->
+                <div class="konversi-form" data-panel-konversi="diskon" style="display:none;">
+                    <div class="konversi-row">
+                        <label for="diskonHarga">Harga Awal (Rp)</label>
+                        <input type="number" id="diskonHarga" data-diskon-harga placeholder="Contoh: 150000">
+                    </div>
+                    <div class="konversi-row">
+                        <label for="diskonPersen">Diskon (%)</label>
+                        <input type="number" id="diskonPersen" data-diskon-persen placeholder="Contoh: 20">
+                    </div>
+                    <div class="konversi-result" data-diskon-hasil></div>
+                </div>
+
+                <!-- ===== PANEL IMT ===== -->
+                <div class="konversi-form" data-panel-konversi="imt" style="display:none;">
+                    <div class="konversi-row">
+                        <label for="imtBerat">Berat Badan (kg)</label>
+                        <input type="number" id="imtBerat" data-imt-berat placeholder="Contoh: 60">
+                    </div>
+                    <div class="konversi-row">
+                        <label for="imtTinggi">Tinggi Badan (cm)</label>
+                        <input type="number" id="imtTinggi" data-imt-tinggi placeholder="Contoh: 165">
+                    </div>
+                    <div class="konversi-result" data-imt-hasil></div>
+                </div>
+                <div class="konversi-form" data-panel-konversi="truth_table">
+                    <div class="konversi-row">
+                        <label for="truthEkspresi">Ekspresi Logika (A-Z)</label>
+                
+                        <!-- Di halaman konversi, input ini yang menangkap ekspresi logika -->
+                        <input type="text" id="truthEkspresi" data-truth-ekspresi placeholder="Klik tombol atau ketik huruf..." readonly>
+                    </div>
+
+                    <!-- KEYPAD LOGIKA KHUSUS DI PANEL KONVERSI -->
+                    <div class="logika-keypad">
+                    <!-- Baris 1: Variabel Populer & Clear -->
+                        <button class="btn-logika var" onclick="inputLogika('P')">P</button>
+                        <button class="btn-logika var" onclick="inputLogika('Q')">Q</button>
+                        <button class="btn-logika var" onclick="inputLogika('R')">R</button>
+                        <button class="btn-logika aksi c" onclick="clearLogika()">C</button>
+
+                        <!-- Baris 2: Variabel Alternatif & NOT -->
+                        <button class="btn-logika var" onclick="inputLogika('X')">X</button>
+                        <button class="btn-logika var" onclick="inputLogika('Y')">Y</button>
+                        <button class="btn-logika var" onclick="inputLogika('Z')">Z</button>
+                        <button class="btn-logika op" onclick="inputLogika(' NOT ')">NOT</button>
+
+                        <!-- Baris 3: Operator Utama & Kurung Buka -->
+                        <button class="btn-logika op" onclick="inputLogika(' AND ')">AND</button>
+                        <button class="btn-logika op" onclick="inputLogika(' OR ')">OR</button>
+                        <button class="btn-logika op" onclick="inputLogika(' XOR ')">XOR</button>
+                        <button class="btn-logika" onclick="inputLogika('(')">(</button>
+
+                        <!-- Baris 4: Operator Kombinasi & Kurung Tutup -->
+                        <button class="btn-logika op-alt" onclick="inputLogika(' NAND ')">NAND</button>
+                        <button class="btn-logika op-alt" onclick="inputLogika(' NOR ')">NOR</button>
+                        <button class="btn-logika op-alt" onclick="inputLogika(' XNOR ')">XNOR</button>
+                        <button class="btn-logika" onclick="inputLogika(')')">)</button>
+                    </div>
+
+                    <!-- Input manual kecil jika butuh huruf A-O atau S-W -->
+                    <div class="konversi-row" style="margin-top:-10px; margin-bottom:20px;">
+                        <input type="text" id="manualHuruf" placeholder="Ketik huruf A-Z manual di sini..." style="width:70%; display:inline-block; padding:8px;">
+                        <button class="btn-logika" onclick="tambahHurufManual()" style="width:27%; display:inline-block; padding:8px; font-size:0.8rem;">+ Masukkan</button>
+                    </div>
+                    
+                    <!-- Wadah Output Tabel & Langkah -->
+                    <div class="truth-steps-container" data-truth-steps></div>
+                    <div data-truth-table></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="JS/konversi.js"></script>
+</body>
+</html>
